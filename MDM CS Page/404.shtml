@@ -1,0 +1,33 @@
+<!-- Save as /404.shtml and configure your server:
+     ErrorDocument 404 /404.shtml
+     Ensure SSI is enabled (e.g. Apache: Options +Includes) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>404 – Page Not Found</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Global stylesheet -->
+  <link rel="stylesheet" href="assets/mdmcomingsoon.css" />
+</head>
+
+<main>
+ 
+  <section class="info-section">
+    <div class="thank-you-card">
+      <h2>We're Sorry</h2>
+      <p>We can’t find that page</p> 
+     <p>Please contact <a href="mailto:contact@missiondrivenpod.com" class="button">Mission-Driven Momentum</a> for assistance.</p>
+    </div>
+
+    <footer>
+    <p>
+     A <a href="https://scanland.org" target="_blank" rel="noopener noreferrer">Scanland</a> Podcast
+    </p>
+  </footer>
+
+
+</body>
+</html>

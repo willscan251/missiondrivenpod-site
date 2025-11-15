@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon - Mission-Driven Momentum</title>
+  <link rel="stylesheet" href="assets/mdmcomingsoon.css"/>
+</head>
+<body>
+  <main>
+    <section class="info-section">
+    <div class="info-box coming-soon-card">
+        <!-- 1) Logo -->
+        <img src="assets/images/missiondriven.png" alt="Mission-Driven Momentum Logo"></div>
+</section>
+
+    <!-- 2) Mission Statement Banner -->
+        <div class="mission-box">
+          <h2>COMING SOON!</h2>
+            <p>Mission-Driven Momentum: Nonprofits, Leadership, &amp; Growth<br>"Stay Focused. Stay Mission-Driven"
+          </p>
+        </div>
+<section class="info-section">
+        <!-- 3) Contact Form -->
+        <section class="contact-section">
+    <!-- panel for the toggle button -->
+    <div class="contact-panel">
+      <div class="contact-trigger">
+        <span>Contact<br>Mission-Driven Momentum</span>
+        <div class="triangle"></div>
+      </div>
+    </div>
+
+    <!-- hidden form -->
+    <div class="contact-body">
+      <form action="https://formspree.io/f/mzzrwpeg" method="POST">
+        <input type="hidden" name="Note"
+               value="This message was sent from the contact page for Mission-Driven Momentum.">
+        <input type="text"   name="Name"    placeholder="Name"    required/>
+        <input type="email"  name="Email"   placeholder="Email"   required/>
+        <input type="text"   name="Subject" placeholder="Subject" required/>
+        <textarea name="Message" placeholder="Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  </main>
+<footer>
+    <p>
+      A <a href="https://scanland.org" target="_blank" rel="noopener noreferrer">Scanland</a> Podcast
+    </p>
+  </footer>
+<script>
+    document.querySelector('.contact-trigger').addEventListener('click', () => {
+      document.querySelector('.contact-section').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

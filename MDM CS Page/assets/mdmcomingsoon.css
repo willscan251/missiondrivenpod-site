@@ -1,0 +1,183 @@
+/* mdmcomingsoon.css */
+
+/* ========== Root Variables ========== */
+:root {
+  /* Strong forest base with uplift-gold accents */
+  --color-bg:        #2F5439;  /* deep green field background */
+  --color-text:      #E8D9B8;  /* soft sand for copy */
+  --color-primary:   #345E46;  /* true green for banners & buttons */
+  --color-accent:    #D8B15A;  /* brass/gold highlights */
+  --color-neutral:   #6E7A72;  /* slate for form fields */
+  --color-footer:    #21392A;  /* dark wood-brown footer */
+  --footer-hover:    #3E5B49;  /* gentle forest hover */
+  --theme-bg: url("images/mdmbg.png");
+}
+
+/* ========== Global Reset ========== */
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: 'Futura', Arial, sans-serif;
+  color: var(--color-text);
+  line-height: 1.5;
+  padding-top: 80px;    /* reserve space for fixed navbar */
+  padding-bottom: 6rem; /* reserve space for sticky footer */
+  background-image: url("images/mdmbg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* ========== Buttons ========== */
+.button {
+  background: var(--color-bg);
+  color: var(--color-accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  transition: background 0.3s;
+}
+.button:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* ========== Mission Banner ========== */
+.mission-box {
+  max-width:1000px; margin:2rem auto;
+  background: var(--color-bg);
+  padding:1.5rem; border-radius:8px;
+  text-align:center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.mission-box h2 {
+  margin:0 0 .5rem; font-size:2rem;
+  color: var(--color-text);
+}
+.mission-box p {
+  margin:0; font-size:1.1rem; font-weight:600;
+  color: var(--color-accent);
+}
+
+.contact-section {
+  max-width: 666px; margin:4rem auto; text-align:center;
+}
+.contact-panel {
+  background: var(--color-transparent);
+  padding:1.5rem;
+  margin-bottom:1rem;
+}
+.contact-trigger {
+  display:inline-flex; flex-direction:column;
+  align-items:center; gap:0.5rem;
+  cursor:pointer; font-weight:bold;
+  color: var(--color-bg);
+}
+.contact-trigger .triangle {
+  width:0; height:0;
+  border-left:8px solid transparent;
+  border-right:8px solid transparent;
+  border-top:8px solid var(--color-bg);
+  transition: transform .3s;
+}
+.contact-section.open .contact-trigger .triangle {
+  transform: rotate(180deg);
+}
+
+/* 6) Contact Form */
+.contact-body {
+  display:none;
+  background: var(--color-bg);
+  border: 4px solid var(--color-accent);
+  border-radius:12px; padding:1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.contact-section.open .contact-body {
+  display:block;
+}
+.contact-body form {
+  display:flex; flex-direction:column; gap:1rem;
+}
+.contact-body input,
+.contact-body textarea {
+  width:100%; padding:0.75rem;
+  border:1px solid var(--color-neutral);
+  border-radius:8px; font-size:1rem;
+}
+.contact-body button {
+  align-self:center; padding:0.75rem 2rem;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  border:none; border-radius:8px; font-weight:bold;
+  cursor:pointer; transition: background .3s;
+}
+.contact-body button:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* ========== Thank You Card ========== */
+.thank-you-card {
+  background: var(--color-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+  max-width: 340px;
+  margin: 3rem auto 4rem;
+  text-align: center;
+}
+.thank-you-card h2 {
+  color: var(--color-accent);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.thank-you-card p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.thank-you-card .button {
+  padding: 0.75rem 2rem;
+}
+
+/* ========== Coming Soon Splash ========== */
+.coming-soon-card {
+  border-radius: 12px;
+  padding: 0rem;
+  max-width: 1200px;
+  margin: 1rem auto;
+  text-align: center;
+}
+.coming-soon-card > img {
+  max-width: 200px;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+
+/* ========== Footer (Sticky & Pinned) ========== */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color-footer);
+  border-top: 1px solid var(--color-footer);
+  padding: 1rem 0;
+  text-align: center;
+  font-weight: bold;
+  z-index: 100; /* ensure it sits above other content */
+}
+
+footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--color-text);
+}
+
