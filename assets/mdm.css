@@ -404,6 +404,7 @@ footer a:hover { color: #437C90; }
   width: 120px;
   height: 120px;
   border-radius: var(--radius-xl);
+  background-image: url('images/missiondriven.png');
   background-size: cover;
   background-position: center;
   box-shadow: var(--shadow-xl);
@@ -480,6 +481,10 @@ footer a:hover { color: #437C90; }
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+}
+
+.player-controls.secondary-controls {
+  margin-top: var(--space-3);
 }
 
 .player-controls button {
@@ -578,6 +583,13 @@ footer a:hover { color: #437C90; }
 }
 
 .episode-list li:last-child { border-bottom: none; }
+
+.loading-placeholder {
+  padding: 2rem !important;
+  text-align: center;
+  color: var(--color-neutral) !important;
+  background: var(--color-bg) !important;
+}
 
 .episode-item {
   display: flex;

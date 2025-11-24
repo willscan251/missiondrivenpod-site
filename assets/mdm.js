@@ -14,6 +14,7 @@ class MDMApp {
     this.setupCardToggles();
     this.setupContactForm();
     this.setupFilters();
+    this.setupPlatformsToggle();
     this.setupAnimations();
     this.setupAccessibility();
   }
@@ -171,6 +172,17 @@ class MDMApp {
           }
         });
       });
+    });
+  }
+
+  setupPlatformsToggle() {
+    const toggle = document.getElementById('platforms-toggle');
+    if (!toggle) return;
+    
+    toggle.addEventListener('click', () => {
+      const section = toggle.closest('.podcast-platforms');
+      const isExpanded = section.classList.toggle('expanded');
+      toggle.textContent = isExpanded ? 'Show Less ▲' : 'More Platforms ▼';
     });
   }
 

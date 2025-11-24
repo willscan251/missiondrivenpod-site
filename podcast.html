@@ -81,7 +81,7 @@
       <audio id="player" preload="metadata" crossorigin="anonymous"></audio>
 
       <!-- Artwork -->
-      <div class="player-artwork" style="background-image: url('assets/images/missiondriven.png');"></div>
+      <div class="player-artwork"></div>
 
       <!-- Current Episode -->
       <div class="player-header">
@@ -111,7 +111,7 @@
       </div>
 
       <!-- Secondary Controls -->
-      <div class="player-controls" style="margin-top: var(--space-3);">
+      <div class="player-controls secondary-controls">
         <button id="speed-btn" aria-label="Playback speed">1×</button>
         <button id="sleep-timer-btn" aria-label="Sleep timer">⏲️ Sleep Timer</button>
         <button id="volume-btn" aria-label="Volume">🔊</button>
@@ -132,7 +132,7 @@
       
       <ul class="episode-list visible" id="episode-list">
         <!-- Episodes will be automatically loaded from Podbean RSS feed -->
-        <li style="padding: 2rem; text-align: center; color: var(--color-neutral);">
+        <li class="loading-placeholder">
           Loading episodes...
         </li>
       </ul>
@@ -146,18 +146,18 @@
       <!-- Main Platforms (Always Visible) -->
       <div class="platform-buttons">
         <a href="https://podcasts.apple.com/us/podcast/mission-driven-momentum/id1855419876" target="_blank" rel="noopener" class="button platform-btn">
-           Apple Podcasts
+          Apple Podcasts
         </a>
         <a href="https://open.spotify.com/show/5BLgqVuLfLZ0ITbpWEh0Wk" target="_blank" rel="noopener" class="button platform-btn">
-           Spotify
+          Spotify
         </a>
         <a href="https://feed.podbean.com/missiondrivenpod/feed.xml" target="_blank" rel="noopener" class="button platform-btn">
-           RSS Feed
+          RSS Feed
         </a>
       </div>
       
       <!-- Expand Button -->
-      <button class="platforms-toggle" onclick="this.closest('.podcast-platforms').classList.toggle('expanded'); this.textContent = this.closest('.podcast-platforms').classList.contains('expanded') ? 'Show Less ▲' : 'More Platforms ▼'">
+      <button class="platforms-toggle" id="platforms-toggle">
         More Platforms ▼
       </button>
       
@@ -165,38 +165,35 @@
       <div class="additional-platforms">
         <div class="platform-buttons">
           <!-- <a href="#" target="_blank" rel="noopener" class="button platform-btn">
-             YouTube
+            YouTube
           </a> -->
           <a href="https://iheart.com/podcast/308914432" target="_blank" rel="noopener" class="button platform-btn">
-             iHeartRadio
+            iHeartRadio
           </a>
           <a href="https://music.amazon.com/podcasts/04ff9efd-cc46-4efe-8f9f-10181e82bcf6" target="_blank" rel="noopener" class="button platform-btn">
-             Amazon Music/Audible
+            Amazon Music/Audible
           </a>
           <a href="https://www.pandora.com/podcast/mission-driven-momentum/PC:1001111404" target="_blank" rel="noopener" class="button platform-btn">
-             Pandora
-          </a>
-         <!-- <a href="#" target="_blank" rel="noopener" class="button platform-btn">
-             TuneIn -->
-          </a>
-          <a href="https://player.fm/series/3703238" target="_blank" rel="noopener" class="button platform-btn">
-             Player FM
-          </a>
-          <a href="https://www.podchaser.com/podcasts/mission-driven-momentum-6292353" target="_blank" rel="noopener" class="button platform-btn">
-             Podchaser
-          </a>
-          <a href="https://www.boomplaymusic.com/podcasts/139994" target="_blank" rel="noopener" class="button platform-btn">
-             Boomplay
-          </a>
-          <a href="https://podcastaddict.com/podcast/mission-driven-momentum/6583975" target="_blank" rel="noopener" class="button platform-btn">
-             Podcast Addict
-          </a>
-          <a href="https://deezer.com/show/1002397672" target="_blank" rel="noopener" class="button platform-btn">
-             Deezer
+            Pandora
           </a>
           <!-- <a href="#" target="_blank" rel="noopener" class="button platform-btn">
-             Platform
+            TuneIn
           </a> -->
+          <a href="https://player.fm/series/3703238" target="_blank" rel="noopener" class="button platform-btn">
+            Player FM
+          </a>
+          <a href="https://www.podchaser.com/podcasts/mission-driven-momentum-6292353" target="_blank" rel="noopener" class="button platform-btn">
+            Podchaser
+          </a>
+          <a href="https://www.boomplaymusic.com/podcasts/139994" target="_blank" rel="noopener" class="button platform-btn">
+            Boomplay
+          </a>
+          <a href="https://podcastaddict.com/podcast/mission-driven-momentum/6583975" target="_blank" rel="noopener" class="button platform-btn">
+            Podcast Addict
+          </a>
+          <a href="https://deezer.com/show/1002397672" target="_blank" rel="noopener" class="button platform-btn">
+            Deezer
+          </a>
         </div>
       </div>
     </section>
