@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -73,7 +73,7 @@
     <!-- Donate Section -->
     <section class="donate-section">
       <p>Help us grow and support more<br>mission-driven stories.</p>
-      <a href="https://donate.stripe.com/5kQ9ATgyldwT1Kt2337wA01" target="_blank" rel="noopener" class="button">Donate Now</a>
+      <a href="https://donate.stripe.com/5kQ9ATgyldwT1Kt233" target="_blank" rel="noopener" class="button">Donate Now</a>
     </section>
 
     <!-- Audio Player -->
@@ -135,16 +135,69 @@
         <li style="padding: 2rem; text-align: center; color: var(--color-neutral);">
           Loading episodes...
         </li>
-      </ul>    </section>
+      </ul>
+    </section>
 
     <!-- Podcast Platforms -->
-    <section class="mission-box" style="background: var(--color-primary); color: var(--color-bg);">
+    <section class="mission-box podcast-platforms">
       <h2>Listen Everywhere</h2>
-      <p>Subscribe to Mission-Driven Momentum on your favorite podcast platform:</p>
-      <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-6);">
-        <a href="https://podcasts.apple.com/us/podcast/mission-driven-momentum/id1855419876" class="button" style="background: var(--color-bg); color: var(--color-text);">Apple Podcasts</a>
-        <a href="https://open.spotify.com/show/5BLgqVuLfLZ0ITbpWEh0Wk" class="button" style="background: var(--color-bg); color: var(--color-text);">Spotify</a>
-        <a href="https://feed.podbean.com/missiondrivenpod/feed.xml" class="button" style="background: var(--color-bg); color: var(--color-text);">RSS Feed</a>
+      <p>Subscribe to Mission-Driven Momentum on your favorite podcast platform</p>
+      
+      <!-- Main Platforms (Always Visible) -->
+      <div class="platform-buttons">
+        <a href="https://podcasts.apple.com/us/podcast/mission-driven-momentum/id1855419876" target="_blank" rel="noopener" class="button platform-btn">
+           Apple Podcasts
+        </a>
+        <a href="https://open.spotify.com/show/5BLgqVuLfLZ0ITbpWEh0Wk" target="_blank" rel="noopener" class="button platform-btn">
+           Spotify
+        </a>
+        <a href="https://feed.podbean.com/missiondrivenpod/feed.xml" target="_blank" rel="noopener" class="button platform-btn">
+           RSS Feed
+        </a>
+      </div>
+      
+      <!-- Expand Button -->
+      <button class="platforms-toggle" onclick="this.closest('.podcast-platforms').classList.toggle('expanded'); this.textContent = this.closest('.podcast-platforms').classList.contains('expanded') ? 'Show Less ▲' : 'More Platforms ▼'">
+        More Platforms ▼
+      </button>
+      
+      <!-- Additional Platforms (Hidden by Default) -->
+      <div class="additional-platforms">
+        <div class="platform-buttons">
+          <!-- <a href="#" target="_blank" rel="noopener" class="button platform-btn">
+             YouTube
+          </a> -->
+          <a href="https://iheart.com/podcast/308914432" target="_blank" rel="noopener" class="button platform-btn">
+             iHeartRadio
+          </a>
+          <a href="https://music.amazon.com/podcasts/04ff9efd-cc46-4efe-8f9f-10181e82bcf6" target="_blank" rel="noopener" class="button platform-btn">
+             Amazon Music/Audible
+          </a>
+          <a href="https://www.pandora.com/podcast/mission-driven-momentum/PC:1001111404" target="_blank" rel="noopener" class="button platform-btn">
+             Pandora
+          </a>
+         <!-- <a href="#" target="_blank" rel="noopener" class="button platform-btn">
+             TuneIn -->
+          </a>
+          <a href="https://player.fm/series/3703238" target="_blank" rel="noopener" class="button platform-btn">
+             Player FM
+          </a>
+          <a href="https://www.podchaser.com/podcasts/mission-driven-momentum-6292353" target="_blank" rel="noopener" class="button platform-btn">
+             Podchaser
+          </a>
+          <a href="https://www.boomplaymusic.com/podcasts/139994" target="_blank" rel="noopener" class="button platform-btn">
+             Boomplay
+          </a>
+          <a href="https://podcastaddict.com/podcast/mission-driven-momentum/6583975" target="_blank" rel="noopener" class="button platform-btn">
+             Podcast Addict
+          </a>
+          <a href="https://deezer.com/show/1002397672" target="_blank" rel="noopener" class="button platform-btn">
+             Deezer
+          </a>
+          <!-- <a href="#" target="_blank" rel="noopener" class="button platform-btn">
+             Platform
+          </a> -->
+        </div>
       </div>
     </section>
   </main>

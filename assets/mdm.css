@@ -863,6 +863,77 @@ footer a:hover { color: #437C90; }
 
 .donate-section p { font-weight: 700; font-size: 1.125rem; margin-bottom: 1.25rem; }
 
+/* Podcast Platforms Section */
+.podcast-platforms {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.platform-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.platform-btn {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  border: 2px solid var(--color-bg) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.25rem;
+  white-space: nowrap;
+}
+
+.platform-btn:hover {
+  background: var(--color-accent) !important;
+  color: var(--color-bg) !important;
+  border-color: var(--color-accent) !important;
+}
+
+.platform-icon {
+  font-size: 1.2rem;
+}
+
+.platforms-toggle {
+  background: rgba(18, 57, 69, 0.3);
+  color: var(--color-bg);
+  border: 2px solid var(--color-bg);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.platforms-toggle:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.additional-platforms {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.podcast-platforms.expanded .additional-platforms {
+  max-height: 500px;
+}
+
+.additional-platforms .platform-buttons {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid rgba(18, 57, 69, 0.3);
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
