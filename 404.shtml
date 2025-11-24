@@ -1,33 +1,79 @@
-<!-- Save as /404.shtml and configure your server:
-     ErrorDocument 404 /404.shtml
-     Ensure SSI is enabled (e.g. Apache: Options +Includes) -->
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>404 – Page Not Found</title>
+  <title>404 – Page Not Found | Mission-Driven Momentum</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-
-  <!-- Global stylesheet -->
-  <link rel="stylesheet" href="assets/mdmcomingsoon.css" />
+  <link rel="stylesheet" href="assets/mdm.css" />
+  <script src="https://cms.scanland.org/cms.js"></script>
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg">
+  
 </head>
 
-<main>
- 
-  <section class="info-section">
-    <div class="thank-you-card">
-      <h2>We're Sorry</h2>
-      <p>We can’t find that page</p> 
-     <p>Please contact <a href="mailto:contact@missiondrivenpod.com" class="button">Mission-Driven Momentum</a> for assistance.</p>
-    </div>
+<body>
+  <header>
+    <div class="navbar">
+      <a href="mdm.html" class="brand">
+        <img src="assets/images/missiondriven.png" alt="Mission-Driven Momentum Logo" class="logo" />
+        <span class="brand-name">Mission-Driven Momentum</span>
+      </a>
 
-    <footer>
+      <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+
+      <nav class="nav-links">
+        <a href="mdm.html">Home</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="dropdown-menu">
+        <a href="mdm.html">Home</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="info-section">
+      <div class="thank-you-card">
+        <div style="font-size: 6rem; margin-bottom: var(--space-4); opacity: 0.8;">🧭</div>
+        <h2>Well, This is Awkward</h2>
+        <p>Looks like we've lost our way! Even mission-driven leaders sometimes end up off the beaten path.</p>
+        
+        <p style="font-size: var(--text-sm); margin-bottom: var(--space-8); opacity: 0.9;">
+          The page you're looking for might have been moved, renamed, or is taking a strategic planning break. 
+        </p>
+
+        <div style="background: rgba(18, 57, 69, 0.2); padding: var(--space-4); border-radius: var(--radius); margin: var(--space-6) 0; text-align: center;">
+          <p style="margin: 0; font-size: var(--text-sm); font-style: italic;">
+            <strong>Strategic Planning Tip:</strong> When you're lost, the best strategy isn't to keep wandering—it's to go back to your last known good position and reassess your route.
+          </p>
+        </div>
+
+        <div style="display: grid; gap: var(--space-3); margin-top: var(--space-6); max-width: 300px; margin-left: auto; margin-right: auto;">
+          <a href="mdm.html" class="button" style="background: var(--color-bg); color: var(--color-text); justify-content: center;">Back to Home Base</a>
+          <a href="podcast.html" class="button" style="background: var(--color-footer); color: var(--color-text); justify-content: center;">Listen to Podcast</a>
+          <a href="blog.html" class="button" style="background: var(--color-footer); color: var(--color-text); justify-content: center;">Read the Blog</a>
+          <a href="tools.html" class="button" style="background: var(--color-footer); color: var(--color-text); justify-content: center;">Grab some Tools</a>
+          <a href="contact.html" class="button" style="background: var(--color-footer); color: var(--color-text); justify-content: center;">Ask for Directions</a>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <p>
-     A <a href="https://scanland.org" target="_blank" rel="noopener noreferrer">Scanland</a> Podcast
+      A <a href="https://scanland.org" target="_blank" rel="noopener">Scanland</a> Podcast
     </p>
   </footer>
 
-
+  <script src="assets/mdm.js"></script>
+  <script src="assets/global-mini-player.js"></script>
 </body>
 </html>

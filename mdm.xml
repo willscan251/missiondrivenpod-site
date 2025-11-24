@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  
+  <channel>
+    <!-- Required: Self-referencing link to this feed -->
+    <atom:link href="https://missiondrivenpod.com/feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <!-- Podcast Basic Info -->
+    <title>Mission-Driven Momentum</title>
+    <link>https://missiondrivenpod.com</link>
+    <language>en-us</language>
+    <copyright>Copyright 2025 The Scanland Group</copyright>
+    <description>Strategic planning insights for nonprofit leaders. Hosted by Pat and Will Scanland of The Scanland Group, this podcast delivers practical insights, real talk, and actionable frameworks to help mission-driven organizations level up.</description>
+    
+    <!-- iTunes/Apple Podcasts Specific Tags -->
+    <itunes:author>Pat and Will Scanland</itunes:author>
+    <itunes:summary>Strategic planning insights for nonprofit leaders. Each episode delivers practical frameworks for organizational growth, team development, and leadership coaching.</itunes:summary>
+    <itunes:owner>
+      <itunes:name>Mission-Driven Momentum</itunes:name>
+      <itunes:email>contact@missiondrivenpod.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://missiondrivenpod.com/assets/images/missiondriven.png"/>
+    <itunes:category text="Business">
+      <itunes:category text="Non-Profit"/>
+    </itunes:category>
+    <itunes:category text="Education">
+      <itunes:category text="Courses"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    
+    <!-- Trailer -->
+    <item>
+      <title>Mission-Driven Momentum Trailer</title>
+      <link>https://missiondrivenpod.com/podcast.html</link>
+      <description>Get ready for practical insights and strategic planning tips. Hosted by mother-son duo Pat and Will Scanland of The Scanland Group, this show delivers the tools you need to power your mission.</description>
+      <enclosure url="https://missiondrivenpod.com/assets/audio/mdmtrailer.mp3" 
+                 length="10898412" 
+                 type="audio/mpeg"/>
+      <guid isPermaLink="false">mdm-trailer</guid>
+      <pubDate>Mon, 24 Nov 2025 09:00:00 EST</pubDate>
+      <itunes:duration>7:33</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:episodeType>trailer</itunes:episodeType>
+      <itunes:image href="https://missiondrivenpod.com/assets/images/missiondriven.png"/>
+    </item>
+    
+  </channel>
+</rss>

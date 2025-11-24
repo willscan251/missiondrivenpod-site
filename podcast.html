@@ -1,0 +1,187 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast | Mission-Driven Momentum</title>
+  <meta name="description" content="Listen to Mission-Driven Momentum podcast episodes. Strategic planning insights for nonprofit leaders with Pat and Will Scanland.">
+  <link rel="stylesheet" href="assets/mdm.css" />
+  <script src="https://cms.scanland.org/cms.js"></script>
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#F5C16C">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://missiondrivenpod.com/podcast">
+  <meta property="og:title" content="Podcast Episodes | Mission-Driven Momentum">
+  <meta property="og:description" content="Listen to strategic planning insights for nonprofit leaders. Hosted by Pat and Will Scanland of The Scanland Group.">
+  <meta property="og:image" content="https://missiondrivenpod.com/assets/images/missiondriven.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Mission-Driven Momentum">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://missiondrivenpod.com/podcast">
+  <meta name="twitter:title" content="Podcast Episodes | Mission-Driven Momentum">
+  <meta name="twitter:description" content="Listen to strategic planning insights for nonprofit leaders. Hosted by Pat and Will Scanland.">
+  <meta name="twitter:image" content="https://missiondrivenpod.com/assets/images/missiondriven.png">
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <a href="mdm.html" class="brand">
+        <img src="assets/images/missiondriven.png" alt="Mission-Driven Momentum Logo" class="logo" />
+        <span class="brand-name">Mission-Driven Momentum</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+      <nav class="nav-links">
+        <a href="podcast.html" class="active">Podcast</a>
+        <a href="blog.html">Blog</a>
+        <a href="tools.html">Tools</a>
+        <a href="resources.html">Resources</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="dropdown-menu">
+        <a href="podcast.html">Podcast</a>
+        <a href="blog.html">Blog</a>
+        <a href="tools.html">Tools</a>
+        <a href="resources.html">Resources</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </div>      
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <h1 class="page-title">Mission-Driven Momentum</h1>
+      <p class="page-description">
+        Dive into every episode of Mission-Driven Momentum.<br> 
+        Find the tools and stories you need to power your mission.
+      </p>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="donate-section">
+      <p>Help us grow and support more<br>mission-driven stories.</p>
+      <a href="https://donate.stripe.com/test_link" target="_blank" rel="noopener" class="button">Donate Now</a>
+    </section>
+
+    <!-- Audio Player -->
+    <section id="audio-player">
+      <audio id="player" preload="metadata" crossorigin="anonymous"></audio>
+
+      <!-- Artwork -->
+      <div class="player-artwork" style="background-image: url('assets/images/missiondriven.png');"></div>
+
+      <!-- Current Episode -->
+      <div class="player-header">
+        <div class="player-current">Select an episode to begin</div>
+      </div>
+
+      <!-- Visualizer -->
+      <div id="visualizer" class="visualizer"></div>
+
+      <!-- Progress Bar -->
+      <div class="player-info">
+        <span class="time-display" id="current-time">0:00</span>
+        <div class="player-progress" id="progress-bar">
+          <div class="progress-bar" id="progress-fill"></div>
+          <div class="progress-tooltip" id="progress-tooltip">0:00</div>
+        </div>
+        <span class="time-display" id="duration">0:00</span>
+      </div>
+
+      <!-- Main Controls -->
+      <div class="player-controls">
+        <button id="prev-btn" aria-label="Previous episode" disabled>◀</button>
+        <button id="skip-back-btn" aria-label="Skip back 15 seconds">⏪ 15s</button>
+        <button id="play-pause-btn" class="play-pause-btn" aria-label="Play episode">▶ Play</button>
+        <button id="skip-forward-btn" aria-label="Skip forward 30 seconds">30s ⏩</button>
+        <button id="next-btn" aria-label="Next episode" disabled>▶</button>
+      </div>
+
+      <!-- Secondary Controls -->
+      <div class="player-controls" style="margin-top: var(--space-3);">
+        <button id="speed-btn" aria-label="Playback speed">1×</button>
+        <button id="sleep-timer-btn" aria-label="Sleep timer">⏲️ Sleep Timer</button>
+        <button id="volume-btn" aria-label="Volume">🔊</button>
+        <button id="shortcuts-btn" aria-label="Keyboard shortcuts">⌨️ Shortcuts</button>
+      </div>
+
+      <!-- Volume Control -->
+      <div class="volume-control">
+        <span>🔊</span>
+        <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="80" aria-label="Volume">
+        <span id="volume-display">80%</span>
+      </div>
+
+      <!-- Episode List (Always Visible) -->
+      <div class="episode-list-header">
+        <h3>Episodes</h3>
+      </div>
+      
+      <ul class="episode-list visible" id="episode-list">
+
+
+
+          <!--li data-src="assets/audio/mdmepisode1.mp3" 
+            data-title="Episode 1: The Power of Strategic Planning" 
+            data-duration="35:19">
+          <div class="episode-item">
+            <div class="episode-info">
+              <strong>Episode 1</strong> The Power of Strategic Planning
+              <small>Building roadmaps that actually work for your mission</small>
+            </div>
+            <button class="episode-play-btn">▶ Play</button>
+          </div>
+        </li-->
+
+        <li data-src="assets/audio/mdmtrailer.mp3" 
+            data-title="Mission-Driven Momentum Trailer" 
+            data-duration="7:33">
+          <div class="episode-item">
+            <div class="episode-info">
+              <strong>Trailer</strong>
+              <small>Get ready for practical insights and strategic planning tips</small>
+            </div>
+            <button class="episode-play-btn">▶ Play</button>
+          </div>
+        </li>
+        
+      </ul>
+    </section>
+
+    <!-- Podcast Platforms -->
+    <section class="mission-box" style="background: var(--color-primary); color: var(--color-bg);">
+      <h2>Listen Everywhere</h2>
+      <p>Subscribe to Mission-Driven Momentum on your favorite podcast platform:</p>
+      <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-6);">
+        <a href="#" class="button" style="background: var(--color-bg); color: var(--color-text);">Apple Podcasts</a>
+        <a href="#" class="button" style="background: var(--color-bg); color: var(--color-text);">Spotify</a>
+        <a href="#" class="button" style="background: var(--color-bg); color: var(--color-text);">Google Podcasts</a>
+        <a href="https://missiondrivenpod.com/mdm.xml" class="button" style="background: var(--color-bg); color: var(--color-text);">RSS Feed</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      A <a href="https://scanland.org" target="_blank" rel="noopener">Scanland</a> Podcast
+    </p>
+  </footer>
+
+  <script src="assets/mdm.js"></script>
+  <script src="assets/global-mini-player.js"></script>
+  <script src="assets/podcast-player.js"></script>
+</body>
+</html>
