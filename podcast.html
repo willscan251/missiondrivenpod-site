@@ -73,7 +73,7 @@
     <!-- Donate Section -->
     <section class="donate-section">
       <p>Help us grow and support more<br>mission-driven stories.</p>
-      <a href="https://donate.stripe.com/test_link" target="_blank" rel="noopener" class="button">Donate Now</a>
+      <a href="https://donate.stripe.com/5kQ9ATgyldwT1Kt2337wA01" target="_blank" rel="noopener" class="button">Donate Now</a>
     </section>
 
     <!-- Audio Player -->
@@ -125,51 +125,26 @@
         <span id="volume-display">80%</span>
       </div>
 
-      <!-- Episode List (Always Visible) -->
+      <!-- Episode List (Dynamically Populated) -->
       <div class="episode-list-header">
         <h3>Episodes</h3>
       </div>
       
       <ul class="episode-list visible" id="episode-list">
-
-
-
-          <!--li data-src="assets/audio/mdmepisode1.mp3" 
-            data-title="Episode 1: The Power of Strategic Planning" 
-            data-duration="35:19">
-          <div class="episode-item">
-            <div class="episode-info">
-              <strong>Episode 1</strong> The Power of Strategic Planning
-              <small>Building roadmaps that actually work for your mission</small>
-            </div>
-            <button class="episode-play-btn">▶ Play</button>
-          </div>
-        </li-->
-
-        <li data-src="assets/audio/mdmtrailer.mp3" 
-            data-title="Mission-Driven Momentum Trailer" 
-            data-duration="7:33">
-          <div class="episode-item">
-            <div class="episode-info">
-              <strong>Trailer</strong>
-              <small>Get ready for practical insights and strategic planning tips</small>
-            </div>
-            <button class="episode-play-btn">▶ Play</button>
-          </div>
+        <!-- Episodes will be automatically loaded from Podbean RSS feed -->
+        <li style="padding: 2rem; text-align: center; color: var(--color-neutral);">
+          Loading episodes...
         </li>
-        
-      </ul>
-    </section>
+      </ul>    </section>
 
     <!-- Podcast Platforms -->
     <section class="mission-box" style="background: var(--color-primary); color: var(--color-bg);">
       <h2>Listen Everywhere</h2>
       <p>Subscribe to Mission-Driven Momentum on your favorite podcast platform:</p>
       <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-6);">
-        <a href="#" class="button" style="background: var(--color-bg); color: var(--color-text);">Apple Podcasts</a>
+        <a href="https://podcasts.apple.com/us/podcast/mission-driven-momentum/id1855419876" class="button" style="background: var(--color-bg); color: var(--color-text);">Apple Podcasts</a>
         <a href="#" class="button" style="background: var(--color-bg); color: var(--color-text);">Spotify</a>
-        <a href="#" class="button" style="background: var(--color-bg); color: var(--color-text);">Google Podcasts</a>
-        <a href="https://missiondrivenpod.com/mdm.xml" class="button" style="background: var(--color-bg); color: var(--color-text);">RSS Feed</a>
+        <a href="https://feed.podbean.com/missiondrivenpod/feed.xml" class="button" style="background: var(--color-bg); color: var(--color-text);">RSS Feed</a>
       </div>
     </section>
   </main>

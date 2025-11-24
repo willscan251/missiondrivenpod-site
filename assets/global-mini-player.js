@@ -1,23 +1,63 @@
-// global-mini-player.js - Rebuilt from scratch
+// global-mini-player.js - Dynamic RSS Fetching
 
 class GlobalMiniPlayer {
   constructor() {
     this.player = null;
     this.miniPlayerEl = null;
     this.currentEpisode = null;
-    this.episodes = [
-      { src: 'assets/audio/mdmtrailer.mp3', title: 'Mission-Driven Momentum Trailer' },
-      { src: 'assets/audio/mdmepisode1.mp3', title: 'Episode 1: The Power of Strategic Planning' }
-    ];
+    this.episodes = [];
+    
+    // RSS Feed URL - ONLY CHANGE THIS WHEN YOU UPDATE PODBEAN
+    this.RSS_FEED_URL = 'https://feed.podbean.com/missiondrivenpod/feed.xml';
     
     const onPodcastPage = window.location.pathname.includes('podcast.html');
     
     if (!onPodcastPage) {
-      const state = this.loadState();
-      if (state) {
-        this.createMiniPlayer();
-        this.restoreState(state);
-      }
+      this.init();
+    }
+  }
+
+  async init() {
+    await this.fetchEpisodes();
+    
+    const state = this.loadState();
+    if (state) {
+      this.createMiniPlayer();
+      this.restoreState(state);
+    }
+  }
+
+  async fetchEpisodes() {
+    try {
+      const response = await fetch(this.RSS_FEED_URL);
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, 'text/xml');
+      
+      const items = xml.querySelectorAll('item');
+      
+      items.forEach(item => {
+        const title = item.querySelector('title')?.textContent || 'Untitled Episode';
+        const enclosure = item.querySelector('enclosure');
+        const audioUrl = enclosure?.getAttribute('url');
+        
+        if (audioUrl) {
+          this.episodes.push({
+            src: audioUrl,
+            title: title
+          });
+        }
+      });
+      
+      console.log(`Mini player loaded ${this.episodes.length} episodes`);
+      
+    } catch (error) {
+      console.error('Failed to fetch episodes for mini player:', error);
+      // Fallback to hardcoded episodes
+      this.episodes = [
+        { src: 'assets/audio/mdmtrailer.mp3', title: 'Mission-Driven Momentum Trailer' },
+        { src: 'assets/audio/mdmepisode1.mp3', title: 'Episode 1: The Power of Strategic Planning' }
+      ];
     }
   }
 
@@ -97,17 +137,11 @@ class GlobalMiniPlayer {
   }
 
   prev() {
-    console.log('prev() called');
     const idx = this.episodes.findIndex(e => e.src === this.currentEpisode?.src);
-    console.log('Current index:', idx, 'Current episode:', this.currentEpisode?.title);
-    
     if (idx > 0) {
       this.currentEpisode = this.episodes[idx - 1];
-      console.log('Switching to:', this.currentEpisode.title);
       
-      // Attach listener BEFORE changing src
       this.player.addEventListener('loadedmetadata', () => {
-        console.log('Metadata loaded, duration:', this.player.duration);
         document.getElementById('mini-time-duration').textContent = this.formatTime(this.player.duration);
       }, { once: true });
       
@@ -115,23 +149,15 @@ class GlobalMiniPlayer {
       document.getElementById('mini-title').textContent = this.currentEpisode.title;
       this.player.load();
       this.player.play();
-    } else {
-      console.log('Cannot go back - already at first episode (idx:', idx, ')');
     }
   }
 
   next() {
-    console.log('next() called');
     const idx = this.episodes.findIndex(e => e.src === this.currentEpisode?.src);
-    console.log('Current index:', idx, 'Current episode:', this.currentEpisode?.title);
-    
     if (idx < this.episodes.length - 1) {
       this.currentEpisode = this.episodes[idx + 1];
-      console.log('Switching to:', this.currentEpisode.title);
       
-      // Attach listener BEFORE changing src
       this.player.addEventListener('loadedmetadata', () => {
-        console.log('Metadata loaded, duration:', this.player.duration);
         document.getElementById('mini-time-duration').textContent = this.formatTime(this.player.duration);
       }, { once: true });
       
@@ -139,8 +165,6 @@ class GlobalMiniPlayer {
       document.getElementById('mini-title').textContent = this.currentEpisode.title;
       this.player.load();
       this.player.play();
-    } else {
-      console.log('Cannot go forward - already at last episode (idx:', idx, ')');
     }
   }
 

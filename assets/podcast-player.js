@@ -1,4 +1,4 @@
-// podcast-player.js - Rebuilt from scratch
+// podcast-player.js - Dynamic RSS Fetching
 
 class PodcastPlayer {
   constructor() {
@@ -8,25 +8,96 @@ class PodcastPlayer {
     this.speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     this.speedIndex = 2;
     this.visualizerBars = [];
-    this.hasPlayed = false; // Track if episode has been played
-    this.sleepTimer = null; // Track sleep timer
+    this.hasPlayed = false;
+    this.sleepTimer = null;
     
-    // Check for clear parameter in URL
+    // RSS Feed URL - ONLY CHANGE THIS WHEN YOU UPDATE PODBEAN
+    this.RSS_FEED_URL = 'https://feed.podbean.com/missiondrivenpod/feed.xml';
+    
+    // Check for clear parameter
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('clear') === '1') {
       console.log('Clearing player state via URL parameter');
       localStorage.removeItem('mdm-mini-player-state');
-      // Remove the parameter from URL
       window.history.replaceState({}, '', window.location.pathname);
     }
     
-    this.loadEpisodes();
+    this.init();
+  }
+
+  async init() {
+    await this.fetchEpisodes();
     this.setupControls();
     this.createVisualizer();
     this.restoreIfNeeded();
   }
 
-  loadEpisodes() {
+  async fetchEpisodes() {
+    try {
+      console.log('Fetching episodes from RSS feed...');
+      const response = await fetch(this.RSS_FEED_URL);
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, 'text/xml');
+      
+      const items = xml.querySelectorAll('item');
+      const episodeList = document.getElementById('episode-list');
+      episodeList.innerHTML = ''; // Clear existing
+      
+      items.forEach((item, index) => {
+        const title = item.querySelector('title')?.textContent || 'Untitled Episode';
+        const enclosure = item.querySelector('enclosure');
+        const audioUrl = enclosure?.getAttribute('url');
+        const duration = item.querySelector('itunes\\:duration, duration')?.textContent || '0:00';
+        const description = item.querySelector('description')?.textContent || '';
+        const episodeType = item.querySelector('itunes\\:episodeType, episodeType')?.textContent || 'full';
+        
+        if (!audioUrl) return;
+        
+        // Create list item
+        const li = document.createElement('li');
+        li.dataset.src = audioUrl;
+        li.dataset.title = title;
+        li.dataset.duration = duration;
+        
+        li.innerHTML = `
+          <div class="episode-item">
+            <div class="episode-info">
+              <strong>${episodeType === 'trailer' ? 'Trailer' : `Episode ${items.length - index}`}</strong> - ${title}
+              <small>${description.substring(0, 100)}${description.length > 100 ? '...' : ''}</small>
+            </div>
+            <button class="episode-play-btn">▶ Play</button>
+          </div>
+        `;
+        
+        episodeList.appendChild(li);
+        
+        // Store episode data
+        this.episodes.push({
+          element: li,
+          src: audioUrl,
+          title: title,
+          index: index
+        });
+        
+        // Add click listener
+        li.addEventListener('click', () => {
+          this.loadEpisode(index);
+          this.player.play();
+        });
+      });
+      
+      console.log(`Loaded ${this.episodes.length} episodes from RSS feed`);
+      
+    } catch (error) {
+      console.error('Failed to fetch episodes:', error);
+      // Fallback to manual episode list if RSS fails
+      this.loadEpisodesFromDOM();
+    }
+  }
+
+  loadEpisodesFromDOM() {
+    // Fallback: load from existing HTML if RSS fetch fails
     document.querySelectorAll('#episode-list li[data-src]').forEach((el, i) => {
       this.episodes.push({
         element: el,
@@ -52,7 +123,6 @@ class PodcastPlayer {
     document.getElementById('volume-slider')?.addEventListener('input', e => this.setVolume(e.target.value));
     document.getElementById('progress-bar')?.addEventListener('click', e => this.seekClick(e));
     
-    // New button handlers
     document.getElementById('sleep-timer-btn')?.addEventListener('click', () => this.openSleepTimer());
     document.getElementById('volume-btn')?.addEventListener('click', () => this.toggleVolumeControl());
     document.getElementById('shortcuts-btn')?.addEventListener('click', () => this.showShortcuts());
@@ -65,7 +135,6 @@ class PodcastPlayer {
     
     window.addEventListener('beforeunload', () => this.saveState());
     
-    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => this.handleKeyboard(e));
     
     const vol = localStorage.getItem('mdm-volume') || 80;
@@ -113,7 +182,7 @@ class PodcastPlayer {
     if (idx < 0) return;
     
     this.loadEpisode(idx, false);
-    this.hasPlayed = true; // Mark as played since we're restoring a saved state
+    this.hasPlayed = true;
     
     this.player.addEventListener('loadedmetadata', () => {
       this.player.currentTime = state.position || 0;
@@ -139,7 +208,7 @@ class PodcastPlayer {
     
     const ep = this.episodes[idx];
     this.currentIndex = idx;
-    this.hasPlayed = false; // Reset when loading new episode
+    this.hasPlayed = false;
     
     this.episodes.forEach(e => e.element.classList.remove('active'));
     ep.element.classList.add('active');
@@ -232,7 +301,7 @@ class PodcastPlayer {
 
   onPlay() {
     document.getElementById('play-pause-btn').innerHTML = '⏸ Pause';
-    this.hasPlayed = true; // Mark that episode has been played
+    this.hasPlayed = true;
     this.animateVisualizer();
     this.saveState();
   }
@@ -261,7 +330,7 @@ class PodcastPlayer {
   }
 
   saveState() {
-    if (this.currentIndex < 0 || !this.hasPlayed) return; // Only save if episode has been played
+    if (this.currentIndex < 0 || !this.hasPlayed) return;
     const ep = this.episodes[this.currentIndex];
     if (!ep) return;
     
@@ -274,8 +343,6 @@ class PodcastPlayer {
       speed: this.player.playbackRate || 1,
       timestamp: Date.now()
     }));
-    
-    console.log('Saved:', ep.title, 'at', this.player.currentTime.toFixed(1));
   }
 
   loadState() {
@@ -322,7 +389,6 @@ class PodcastPlayer {
       ${this.sleepTimer ? '<button class="modal-button" style="background: var(--color-neutral);" onclick="window.podcastPlayer.cancelSleepTimer()">Cancel Timer</button>' : ''}
     `, 'timer');
     
-    // Add event listeners to preset buttons
     document.querySelectorAll('.timer-preset').forEach(btn => {
       btn.addEventListener('click', () => {
         const minutes = parseInt(btn.dataset.minutes);
@@ -332,13 +398,11 @@ class PodcastPlayer {
   }
 
   setSleepTimer(mins) {
-    // Clear existing timer
     if (this.sleepTimer) {
       clearTimeout(this.sleepTimer);
       this.sleepTimer = null;
     }
     
-    // Set new timer
     this.sleepTimer = setTimeout(() => {
       this.player.pause();
       document.getElementById('sleep-timer-btn').textContent = '⏲️ Sleep Timer';
@@ -389,10 +453,8 @@ class PodcastPlayer {
   }
 
   handleKeyboard(e) {
-    // Don't trigger if user is typing in an input field
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     
-    // Close modal with Escape
     if (e.key === 'Escape') {
       this.closeModal();
       return;
@@ -441,7 +503,6 @@ class PodcastPlayer {
   }
 
   showModal(content, type) {
-    // Remove existing modal if any
     this.closeModal();
     
     const modal = document.createElement('div');
