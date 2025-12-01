@@ -52,6 +52,11 @@ class PodcastPlayer {
         const description = item.querySelector('description')?.textContent || '';
         const episodeType = item.querySelector('itunes\\:episodeType, episodeType')?.textContent || 'full';
         
+        // Truncate description to 1000 characters
+        const truncatedDesc = description.length > 1000 
+          ? description.substring(0, 1000) + '...' 
+          : description;
+        
         if (!audioUrl) return;
         
         // Create list item
@@ -63,10 +68,15 @@ class PodcastPlayer {
         li.innerHTML = `
           <div class="episode-item">
             <div class="episode-info">
-              <strong>${episodeType === 'trailer' ? 'Trailer' : `Episode ${items.length - index}`}</strong> - ${title}
-              <small>${description.substring(0, 100)}${description.length > 100 ? '...' : ''}</small>
+              ${title}
             </div>
-            <button class="episode-play-btn">▶ Play</button>
+            <div class="episode-buttons">
+              <button class="episode-info-btn">ℹ️ Info</button>
+              <button class="episode-play-btn">▶ Play</button>
+            </div>
+          </div>
+          <div class="episode-description hidden">
+            <p>${truncatedDesc}</p>
           </div>
         `;
         
@@ -80,7 +90,23 @@ class PodcastPlayer {
           index: index
         });
         
-        // Add click listener
+        // Add play click listener
+        li.querySelector('.episode-play-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.loadEpisode(index);
+          this.player.play();
+        });
+        
+        // Add info toggle listener
+        li.querySelector('.episode-info-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          const descEl = li.querySelector('.episode-description');
+          const btn = e.target;
+          const isHidden = descEl.classList.toggle('hidden');
+          btn.textContent = isHidden ? 'ℹ️ Info' : 'ℹ️ Hide';
+        });
+        
+        // Keep original click for play
         li.addEventListener('click', () => {
           this.loadEpisode(index);
           this.player.play();

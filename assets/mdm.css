@@ -592,9 +592,8 @@ footer a:hover { color: #437C90; }
 }
 
 .episode-item {
-  display: flex;
+  display: center;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -615,6 +614,32 @@ footer a:hover { color: #437C90; }
   opacity: 0.8;
 }
 
+.episode-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.episode-info-btn {
+  background: var(--color-footer);
+  color: var(--color-text);
+  border: 2px solid var(--color-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.875rem;
+  min-height: 40px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.episode-info-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
 .episode-play-btn {
   background: var(--color-primary);
   color: var(--color-bg);
@@ -626,12 +651,35 @@ footer a:hover { color: #437C90; }
   font-size: 0.875rem;
   min-height: 40px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .episode-play-btn:hover {
   background: var(--color-accent);
   border-color: var(--color-accent);
   transform: scale(1.05);
+}
+
+.episode-description {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(245,193,108,0.2);
+  margin-top: 1rem;
+}
+
+.episode-description.hidden {
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.episode-description p {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 /* Blog Cards */
@@ -686,6 +734,10 @@ footer a:hover { color: #437C90; }
   font-size: 0.875rem;
   color: var(--color-neutral);
   margin-top: 0.25rem;
+}
+
+.blog-tag.subscribe {
+  background: var(--color-primary);
 }
 
 .expand-btn {
@@ -747,6 +799,18 @@ footer a:hover { color: #437C90; }
 .btn-secondary {
   background: var(--color-bg) !important;
   border-color: var(--color-primary) !important;
+}
+
+/* CTA Sections */
+.cta-section {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.cta-button {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  margin-top: var(--space-4);
 }
 
 /* Contact */
@@ -1601,6 +1665,20 @@ footer a:hover { color: #437C90; }
   .player-controls button { width: 100%; }
   
   #audio-player { padding: 1.5rem 1rem; margin: 1.5rem 0.5rem; }
+  
+  .episode-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .episode-buttons {
+    width: 100%;
+    justify-content: stretch;
+  }
+  
+  .episode-buttons button {
+    flex: 1;
+  }
   
   .modal-content {
     padding: 1.5rem;
