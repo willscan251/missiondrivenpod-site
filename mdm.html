@@ -147,16 +147,39 @@
       </div>
     </section>
 
-    <!-- Quick Links -->
-    <section class="mission-box">
-      <h2>Ready to Get Started?</h2>
-      <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-6);">
-        <a href="podcast.html" class="button">Latest Episodes</a>
-        <a href="blog.html" class="button">Blog Posts</a>
-        <a href="tools.html" class="button">Free Tools</a>
+<!-- Quick Links -->
+<section class="mission-box">
+  <h2>Ready to Get Started?</h2>
+  <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-6);">
+    <a href="podcast.html" class="button">Latest Episodes</a>
+    <a href="blog.html" class="button">Blog Posts</a>
+    <a href="tools.html" class="button">Free Tools</a>
+  </div>
+  
+  <div class="home-subscribe-section">
+    <p class="subscribe-tagline">Stay in the loop with weekly insights for mission-driven leaders.</p>
+    <div class="subscribe-form-container" id="subscribe-form-home">
+      <div class="subscribe-initial">
+        <button type="button" class="button subscribe-trigger">Subscribe to Our Newsletter</button>
       </div>
-    </section>
-  </main>
+      <div class="subscribe-form hidden">
+        <form class="zoho-subscribe-form">
+          <div class="form-row">
+            <input type="text" name="FIRSTNAME" placeholder="First Name">
+            <input type="text" name="LASTNAME" placeholder="Last Name">
+          </div>
+          <input type="email" name="CONTACT_EMAIL" placeholder="Email Address" required>
+          <div class="form-buttons">
+            <button type="submit" class="button">Join the List</button>
+            <button type="button" class="button btn-secondary subscribe-cancel">Cancel</button>
+          </div>
+        </form>
+        <div class="subscribe-message hidden"></div>
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
 
   <!-- Footer -->
   <footer>
@@ -168,5 +191,6 @@
   <!-- JavaScript -->
   <script src="assets/mdm.js"></script>
   <script src="assets/global-mini-player.js"></script>
+  <script src="assets/subscribe.js"></script>
 </body>
 </html>

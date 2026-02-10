@@ -783,7 +783,7 @@ footer a:hover { color: #437C90; }
 }
 
 .takeaway-list li::before {
-  content: "✓";
+  content: "âœ“";
   position: absolute;
   left: 0;
   color: var(--color-primary);
@@ -961,6 +961,304 @@ footer a:hover { color: #437C90; }
   transform: scale(1.2);
 }
 
+/* Inline Subscribe Form */
+.subscribe-form-container {
+  margin-top: var(--space-4);
+}
+
+.subscribe-initial {
+  text-align: center;
+}
+
+.subscribe-form {
+  animation: subscribeSlide 0.3s ease;
+}
+
+@keyframes subscribeSlide {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.subscribe-form.hidden,
+.subscribe-initial.hidden,
+.subscribe-message.hidden {
+  display: none;
+}
+
+.zoho-subscribe-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.zoho-subscribe-form .form-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0;
+}
+
+.zoho-subscribe-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 2px solid var(--color-neutral);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.95);
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  min-height: 44px;
+  color: var(--color-bg);
+}
+
+.zoho-subscribe-form input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(245, 193, 108, 0.3);
+}
+
+.zoho-subscribe-form input::placeholder {
+  color: var(--color-neutral);
+}
+
+.zoho-subscribe-form .form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.zoho-subscribe-form .form-buttons .button {
+  flex: 1;
+  max-width: 150px;
+}
+
+.subscribe-message {
+  text-align: center;
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  margin-top: var(--space-4);
+}
+
+.subscribe-message.success {
+  background: rgba(168, 198, 134, 0.2);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.subscribe-message.error {
+  background: rgba(220, 53, 69, 0.2);
+  border: 2px solid #dc3545;
+  color: #ff6b6b;
+}
+
+.subscribe-message p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.home-subscribe-section {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(234, 216, 167, 0.2);
+}
+
+.subscribe-tagline {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: var(--space-4);
+  opacity: 0.9;
+}
+
+.subscribe-card .card-body {
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .zoho-subscribe-form .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .zoho-subscribe-form .form-buttons {
+    flex-direction: column;
+  }
+  
+  .zoho-subscribe-form .form-buttons .button {
+    max-width: 100%;
+  }
+}
+
+/* Floating Subscribe Widget */
+.subscribe-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.subscribe-float.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.subscribe-float-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.subscribe-float-btn:hover {
+  background: var(--color-primary);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.subscribe-float-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.subscribe-float-btn.hidden {
+  display: none;
+}
+
+.subscribe-float-panel {
+  display: none;
+  background: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  width: 300px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  animation: floatSlideUp 0.3s ease;
+}
+
+@keyframes floatSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subscribe-float-panel.active {
+  display: block;
+}
+
+.subscribe-float-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.subscribe-float-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+
+.subscribe-float-close {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.subscribe-float-close:hover {
+  opacity: 1;
+}
+
+.subscribe-float-panel p {
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+.subscribe-float-panel .zoho-subscribe-form {
+  max-width: 100%;
+}
+
+.subscribe-float-panel .zoho-subscribe-form input {
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.subscribe-float-panel .zoho-subscribe-form .form-row {
+  flex-direction: column;
+  gap: 0;
+}
+
+.subscribe-float-panel .form-buttons {
+  margin-top: 0.5rem;
+}
+
+.subscribe-float-panel .form-buttons .button {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  max-width: 100%;
+}
+
+.subscribe-float-panel .subscribe-message {
+  padding: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.subscribe-float.dismissed {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .subscribe-float {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+  }
+  
+  .subscribe-float-panel {
+    width: auto;
+  }
+  
+  .subscribe-float-btn span {
+    display: none;
+  }
+  
+  .subscribe-float-btn {
+    padding: 0.85rem;
+    border-radius: 50%;
+  }
+}
 
 /* Donate Section */
 .donate-section {
