@@ -1114,30 +1114,34 @@ footer a:hover { color: #437C90; }
 .subscribe-float-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: var(--color-accent);
+  gap: 0.6rem;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, var(--color-accent), #e0a84a);
   color: var(--color-bg);
   border: none;
-  border-radius: 50px;
+  border-radius: 30px;
   font-family: var(--font-primary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .subscribe-float-btn:hover {
-  background: var(--color-primary);
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, var(--color-primary), #8fb36e);
+  transform: scale(1.03);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
 }
 
-.subscribe-float-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
+.subscribe-float-btn .float-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.subscribe-float-btn .float-text {
+  line-height: 1.2;
 }
 
 .subscribe-float-btn.hidden {
@@ -1243,20 +1247,31 @@ footer a:hover { color: #437C90; }
   .subscribe-float {
     bottom: 15px;
     right: 15px;
-    left: 15px;
-  }
-  
-  .subscribe-float-panel {
-    width: auto;
-  }
-  
-  .subscribe-float-btn span {
-    display: none;
   }
   
   .subscribe-float-btn {
-    padding: 0.85rem;
+    padding: 0.75rem;
     border-radius: 50%;
+  }
+  
+  .subscribe-float-btn .float-text {
+    display: none;
+  }
+  
+  .subscribe-float-btn .float-icon {
+    font-size: 1.4rem;
+  }
+  
+  .subscribe-float-panel {
+    width: calc(100vw - 30px);
+    right: 0;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .subscribe-float-btn {
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
   }
 }
 

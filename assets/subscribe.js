@@ -113,37 +113,33 @@
     });
   }
 
-  function createFloatWidget() {
-    const widget = document.createElement('div');
-    widget.className = 'subscribe-float';
-    widget.innerHTML = `
-      <button type="button" class="subscribe-float-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-        <span>Never Miss a Mission-Driven Update</span>
-      </button>
-      <div class="subscribe-float-panel">
-        <div class="subscribe-float-header">
-          <h4>Stay in the Loop</h4>
-          <button type="button" class="subscribe-float-close">&times;</button>
-        </div>
-        <p>Weekly insights for mission-driven leaders.</p>
-        <form class="zoho-subscribe-form">
-          <div class="form-row">
-            <input type="text" name="FIRSTNAME" placeholder="First Name">
-            <input type="text" name="LASTNAME" placeholder="Last Name">
-          </div>
-          <input type="email" name="CONTACT_EMAIL" placeholder="Email Address" required>
-          <div class="form-buttons">
-            <button type="submit" class="button">Subscribe</button>
-          </div>
-        </form>
-        <div class="subscribe-message hidden"></div>
-      </div>
-    `;
-    return widget;
-  }
+function createFloatWidget() {
+  var widget = document.createElement('div');
+  widget.className = 'subscribe-float';
+  widget.innerHTML = '<button type="button" class="subscribe-float-btn">' +
+    '<span class="float-icon">✉</span>' +
+    '<span class="float-text">Never Miss a Mission-Driven Update</span>' +
+  '</button>' +
+  '<div class="subscribe-float-panel">' +
+    '<div class="subscribe-float-header">' +
+      '<h4>Stay in the Loop</h4>' +
+      '<button type="button" class="subscribe-float-close">&times;</button>' +
+    '</div>' +
+    '<p>Weekly insights for mission-driven leaders.</p>' +
+    '<form class="zoho-subscribe-form">' +
+      '<div class="form-row">' +
+        '<input type="text" name="FIRSTNAME" placeholder="First Name">' +
+        '<input type="text" name="LASTNAME" placeholder="Last Name">' +
+      '</div>' +
+      '<input type="email" name="CONTACT_EMAIL" placeholder="Email Address" required>' +
+      '<div class="form-buttons">' +
+        '<button type="submit" class="button">Subscribe</button>' +
+      '</div>' +
+    '</form>' +
+    '<div class="subscribe-message hidden"></div>' +
+  '</div>';
+  return widget;
+}
 
   function dismissWidget(widget) {
     widget.classList.remove('visible');
