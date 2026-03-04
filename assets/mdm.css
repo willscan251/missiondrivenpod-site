@@ -1323,6 +1323,25 @@ footer a:hover { color: #437C90; }
   margin-top: 0.5rem;
 }
 
+.resource-row {
+  display: flex;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.resource-row .resource-card {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .resource-row {
+    flex-direction: column;
+  }
+}
+
 /* Resources Mobile */
 @media (max-width: 768px) {
   .resource-card {
