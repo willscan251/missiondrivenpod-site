@@ -696,6 +696,7 @@ footer a:hover { color: #437C90; }
   border-radius: var(--radius-2xl);
   padding: 1.5rem;
   transition: all 0.3s;
+  overflow: hidden;
 }
 
 .blog-card:hover, .tool-card:hover {
@@ -713,6 +714,7 @@ footer a:hover { color: #437C90; }
 
 .blog-info {
   flex: 1;
+  min-width: 0;
 }
 
 .blog-tag {
